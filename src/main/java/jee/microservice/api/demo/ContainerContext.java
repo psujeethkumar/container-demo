@@ -29,10 +29,21 @@ public class ContainerContext {
 		return "Hello! I'm container with name :  " + containerId;
 	}
 
-
 	@GetMapping("/{input}")
 	public String introduce(@PathVariable String input) {
 		return "Hello " + input + " ! I'm container with name :  " + containerId + " living in a world called open shift.";
+	}
+
+	@GetMapping("/load}")
+	public String load() {
+		int numCore = 2;
+		int numThreadsPerCore = 2;
+		double load = 0.8;
+		final long duration = 100000;
+		for (int thread = 0; thread < numCore * numThreadsPerCore; thread++) {
+			new CPULoadGenerator("Thread" + thread, load, duration).start();
+		}
+		return " Generated load & now check on my brother pods ";
 	}
 
 	public static void main(String[] args) {
