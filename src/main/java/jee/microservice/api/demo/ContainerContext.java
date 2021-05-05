@@ -28,6 +28,11 @@ public class ContainerContext {
 	public String represent() {
 		return "Hello! I'm container with name :  " + containerId;
 	}
+	
+	@GetMapping("/demo")
+	public String demo() {
+		return "Demo message :  " + containerId;
+	}
 
 	@GetMapping("/{input}")
 	public String introduce(@PathVariable String input) {
