@@ -19,7 +19,7 @@ public class ContainerContext {
 			InetAddress id = InetAddress.getLocalHost();
 			containerId = id.getHostName();
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
+			containerId= e.getMessage();
 		}
 		return "Welcome to java techie " + containerId;
 	}
