@@ -31,7 +31,7 @@ public class ContainerContext {
 
 
 	@GetMapping("/{input}")
-	public String introduce(@PathVariable String input) {
+	public String introduce(@PathVariable String input) {		
 		return "Hello " + input + " ! I'm container with name :  " + containerId + " living in a world called open shift.";
 	}
 
