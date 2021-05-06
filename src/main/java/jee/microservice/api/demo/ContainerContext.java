@@ -38,6 +38,11 @@ public class ContainerContext {
 	public String introduce(@PathVariable String input) {
 		return "Hello " + input + " ! I'm container with name :  " + containerId + " living in a world called open shift.";
 	}
+	
+	@GetMapping("/hello")
+	public String introduce(@PathVariable String input) {
+		return "Hello ";
+	}
 
 	@GetMapping("/load")
 	public String load() {
