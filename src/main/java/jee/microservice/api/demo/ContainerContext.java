@@ -39,7 +39,7 @@ public class ContainerContext {
 		return "Hello " + input + " ! I'm container with name :  " + containerId + " living in a world called open shift.";
 	}
 
-	@GetMapping("/load}")
+	@GetMapping("/load")
 	public String load() {
 //		int numCore = 2;
 //		int numThreadsPerCore = 2;
