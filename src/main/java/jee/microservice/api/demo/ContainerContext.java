@@ -41,13 +41,28 @@ public class ContainerContext {
 
 	@GetMapping("/load}")
 	public String load() {
-		int numCore = 2;
-		int numThreadsPerCore = 2;
+//		int numCore = 2;
+//		int numThreadsPerCore = 2;
 		double load = 0.8;
-		final long duration = 100000;
-		for (int thread = 0; thread < numCore * numThreadsPerCore; thread++) {
-			new CPULoadGenerator("Thread" + thread, load, duration).start();
-		}
+		final long duration = 60000;
+		
+		long startTime = System.currentTimeMillis();
+		try {
+            // Loop for the given duration
+            while (System.currentTimeMillis() - startTime < duration) {
+                // Every 100ms, sleep for the percentage of unladen time
+                if (System.currentTimeMillis() % 100 == 0) {
+                    Thread.sleep((long) Math.floor((1 - load) * 100));
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//		
+//		
+//		for (int thread = 0; thread < numCore * numThreadsPerCore; thread++) {
+//			new CPULoadGenerator("Thread" + thread, load, duration, null).start();
+//		}
 		return " Generated load & now check on my brother pods ";
 	}
 
