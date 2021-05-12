@@ -28,41 +28,29 @@ public class ContainerContext {
 	public String represent() {
 		return "Hello! I'm container with name :  " + containerId;
 	}
-	
-	@GetMapping("/demo")
-	public String demo() {
-		return "Demo message :  " + containerId;
-	}
+
 
 	@GetMapping("/{input}")
 	public String introduce(@PathVariable String input) {
-		return "Hello " + input + " ! I'm container with name :  " + containerId + " living in a world called open shift.";
+		return "<H3> Hello ! " + input + " I'm container service living in the world of OCP. I have a name called " + containerId + "</H3>";
 	}
 
 	@GetMapping("/load")
 	public String load() {
-//		int numCore = 2;
-//		int numThreadsPerCore = 2;
+		;
 		double load = 0.8;
 		final long duration = 60000;
-		
+
 		long startTime = System.currentTimeMillis();
 		try {
-            // Loop for the given duration
-            while (System.currentTimeMillis() - startTime < duration) {
-                // Every 100ms, sleep for the percentage of unladen time
-                if (System.currentTimeMillis() % 100 == 0) {
-                    Thread.sleep((long) Math.floor((1 - load) * 100));
-                }
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-//		
-//		
-//		for (int thread = 0; thread < numCore * numThreadsPerCore; thread++) {
-//			new CPULoadGenerator("Thread" + thread, load, duration, null).start();
-//		}
+			while (System.currentTimeMillis() - startTime < duration) {
+				if (System.currentTimeMillis() % 100 == 0) {
+					Thread.sleep((long) Math.floor((1 - load) * 100));
+				}
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return " Generated load & now check on my brother pods ";
 	}
 
