@@ -35,24 +35,7 @@ public class ContainerContext {
 		return "<H3> Hello ! " + input + " I'm a container service living in the world of OCP. I have a name called " + containerId + "</H3>";
 	}
 
-	@GetMapping("/load")
-	public String load() {
-		;
-		double load = 0.8;
-		final long duration = 60000;
-
-		long startTime = System.currentTimeMillis();
-		try {
-			while (System.currentTimeMillis() - startTime < duration) {
-				if (System.currentTimeMillis() % 100 == 0) {
-					Thread.sleep((long) Math.floor((1 - load) * 100));
-				}
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return " Generated load & now check on my brother pods ";
-	}
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(ContainerContext.class, args);
