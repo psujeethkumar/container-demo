@@ -32,7 +32,7 @@ public class ContainerContext {
 
 	@GetMapping("/{input}")
 	public String introduce(@PathVariable String input) {
-		return "<H3> Hello ! " + input + " I'm a container service living in the world of OCP. I have a name called " + containerId + "</H3>";
+		return "UPDATE : <H3> Hello ! " + input + " I'm a container service living in the world of OCP. I have a name called " + containerId + "</H3>";
 	}
 
 	@GetMapping("/load")
